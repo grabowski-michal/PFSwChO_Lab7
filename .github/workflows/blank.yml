@@ -17,6 +17,8 @@ jobs:
       - name: Buildx set-up
         id: buildx
         uses: docker/setup-buildx-action@v2
+        with:
+          version: v0.7.0
         
       #Instalacja QEMU
       - name: Docker Setup QEMU
@@ -46,7 +48,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
           platforms: linux/arm/v7,linux/arm64/v8,linux/amd64 
-          context: ./
+          context: .
           file: ./dockerfile.v1
           push: true
           tags: |
